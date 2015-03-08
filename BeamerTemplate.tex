@@ -1,0 +1,244 @@
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+% --------------------------------------------
+% Por Patricio López Juri (pelopez2@uc.cl)
+\documentclass{beamer}
+
+
+%% -----------------------------------------------------
+%% Python & código -------------------------------------
+%% -----------------------------------------------------
+
+% Source: https://github.com/bamos/beamer-snippets
+
+\usepackage[T1]{fontenc}
+\usepackage{parskip,graphics,tikz,multimedia,hyperref,ulem,multicol}
+\usetikzlibrary{arrows,positioning,shapes,decorations.pathmorphing,snakes}
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}
+\graphicspath{{./images/}}
+
+\usepackage{listings,textcomp,color}
+\lstset{language=Python,upquote=true,
+  basicstyle=\ttfamily\tiny,numbers=left,
+  numberstyle=\tiny,stepnumber=1,numbersep=5pt,
+  backgroundcolor=\color{white},frame=single,tabsize=2,
+  showspaces=false,showstringspaces=false,showtabs=false,
+  breaklines=true,breakatwhitespace=true,escapeinside=||,
+  keywordstyle=\color{blue!70},stringstyle=\color{green!70!black!70},
+  commentstyle=\color{black!80}\it
+}
+
+\usebackgroundtemplate{
+  \tikz[overlay,remember picture]
+  \node[yshift=10mm,anchor=south east,inner sep=0pt]
+    at (current page.south east) {
+    % Add small logo here if desired.
+    % \includegraphics[width=0.5in]{Images/python-logo.png}
+  };
+}
+
+\tikzset{
+  yn/.style={draw,thick,rounded corners,fill=yellow!20,inner sep=.3cm},
+  bn/.style={draw,thick,rounded corners,fill=blue!05,inner sep=.3cm},
+  on/.style={draw,thick,rounded corners,fill=orange!20,inner sep=.3cm},
+  rn/.style={draw,thick,rounded corners,fill=red!20,inner sep=.3cm},
+  greenn/.style={draw,thick,rounded corners,fill=green!20,inner sep=.3cm},
+  grayn/.style={draw,thick,rounded corners,fill=gray!20,inner sep=.3cm},
+  to/.style={
+    ->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize
+  },
+  from/.style={
+    <-,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize
+  },
+  tofrom/.style={
+    <->,>=stealth',shorten >=1pt,semithick,font=\sffamily\footnotesize
+  },
+  every node/.style={align=center},
+  squig/.style={->,line join=round,decorate, decoration={zigzag,
+    segment length=8,amplitude=2,post=lineto,post length=2pt}}
+}
+
+\newcommand{\uncheckedBox}{\ensuremath{\square}}
+\newcommand{\checkedBox}{\ensuremath{\text{\rlap{\checkmark}}\square}}
+
+\beamertemplatenavigationsymbolsempty
+
+\expandafter\def\expandafter\insertshorttitle\expandafter{%
+  \insertshorttitle\hfill%
+  \insertframenumber\,/\,\inserttotalframenumber}
+
+\usepackage{enumitem}
+\setlist[1]{itemsep=5pt}
+\setitemize{label=\usebeamerfont*{itemize item}%
+  \usebeamercolor[fg]{itemize item}
+  \usebeamertemplate{itemize item}}
+  
+  
+%% -----------------------------------------------------
+%% Lenguaje --------------------------------------------
+%% -----------------------------------------------------
+
+% \usepackage[T1]{fontenc} Está mas arriba.
+\usepackage{selinput}
+\SelectInputMappings{%
+  aacute={á},
+  ntilde={ñ},
+  Euro={€}
+}
+\usepackage{babel}
+
+
+%% -----------------------------------------------------
+%% Tema ------------------------------------------------
+%% -----------------------------------------------------
+
+% Colores principales
+\usetheme{CambridgeUS}
+
+% Para las URL
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+
+%% -----------------------------------------------------
+%% Main ------------------------------------------------
+%% -----------------------------------------------------
+
+% Título, debe ir obligatoriamente
+\title{Título}
+
+% Subtítulo opcional
+\subtitle{Subtítulo}
+
+% Ayudantes
+\author{Ayudante 1 \and Ayudante 2}
+
+% Universidad
+\institute[UC]
+{
+  Departmento de Ciencias de la Computación\\
+  Pontificia Universidad Católica de Chile
+}
+
+% Dimensión tiempo espacio a mostrar.
+\date{IIC2233, 2015-1}
+
+% Metadada
+\subject{Ayudantía de Programación Avanzada}
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+% \AtBeginSubsection[]
+% {
+%   \begin{frame}<beamer>{Outline}
+%     \tableofcontents[currentsection,currentsubsection]
+%   \end{frame}
+% }
+
+
+%% -----------------------------------------------------
+%% Incio del documento ---------------------------------
+%% -----------------------------------------------------
+
+\begin{document}
+
+% Agregamos la página de inicio (la del título)
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Tabla de contenidos, tiene hipervínculos.
+% Los índices son tomados del nombre que se le asigne a las \section.
+% Los sub-índices provienen de las \subsections
+\begin{frame}{Tabla de contenidos}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+%% **********************
+%% Sección **************
+%% **********************
+\section{Primera sección}
+
+\begin{frame}{Título Primera sección}{Sub-título}
+  \begin{itemize}
+  \item
+    Item con texto.
+  \item
+    Item con \alert{texto importante}.
+  \end{itemize}
+\end{frame}
+
+
+%% **********************
+%% Sección **************
+%% **********************
+\section{Segunda sección}
+
+%% Sub-sección 
+%% **********************
+\subsection{Subsección}
+
+\begin{frame}[fragile]{Subsección}
+  Código
+  \begin{lstlisting}[language=Python,keywordstyle=\bf,stringstyle=\it]
+print('Hello Wolrd')
+  \end{lstlisting}
+\end{frame}
+
+
+%% **********************
+%% Sumario **************
+%% **********************
+% Al ponerle un * a \section hace que no aparezca en el índice.
+\section*{Sumario}
+
+\begin{frame}{Sumario}
+  \begin{itemize}
+  \item
+    Item
+  \end{itemize}
+\end{frame}
+
+
+%% **********************
+%% Lecturas o material ***
+%% **********************
+% Icons: http://tex.stackexchange.com/questions/68080/beamer-bibliography-icon
+\appendix
+\section<presentation>*{\appendixname}
+\subsection<presentation>*{Lecturas y materiales}
+
+\begin{frame}[allowframebreaks]
+  \frametitle<presentation>{Lecturas y materiales}
+    
+  \begin{thebibliography}{10}
+    
+  \setbeamertemplate{bibliography item}[online]
+  \bibitem{Doc}
+    Documentación Python3.x
+    \newblock {\em \url{https://docs.python.org/3}}.
+    \newblock 6 de marzo, 2015.
+  \end{thebibliography}
+\end{frame}
+
+\end{document}
